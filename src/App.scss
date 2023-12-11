@@ -33,4 +33,17 @@
   justify-content: space-evenly;
   border: 2px solid var(--white);
   border-radius: 20px;
+  position: relative;
+
+  .reload-icon {
+    position: absolute;
+    top: 7%;
+    right: 5%;
+    font-size: 20px;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--blue);
+    }
+  }
 }

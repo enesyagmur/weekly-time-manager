@@ -1,21 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./openHours.scss";
 import Four from "./Four";
 import Five from "./Five";
 import Ten from "./Ten";
+import { useDispatch } from "react-redux";
+import { updateTargetStudyCount } from "../../redux/targetSlice";
 
 const OpenHours = () => {
   const [hourSelected, setHourSelected] = useState(0);
-
-  const selectTargetHour = (time) => {
-    setHourSelected(time);
-    const takeTargetTime = localStorage.getItem("targetStudy");
-    if (takeTargetTime) {
-      const targetStudy = Number(takeTargetTime) + Number(time);
-      localStorage.setItem("targetStudy", targetStudy);
-    } else {
-      localStorage.setItem("targetStudy", time);
-    }
+  const dispatch = useDispatch();
+  const selectTargetHour = (selectedTime) => {
+    setHourSelected(selectedTime);
+    let takeTargetTime = localStorage.getItem("targetStudy");
+    const targetStudy = Number(takeTargetTime) + Number(selectedTime);
+    localStorage.setItem("targetStudy", targetStudy);
+    dispatch(updateTargetStudyCount());
   };
 
   if (hourSelected === 0) {
