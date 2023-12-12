@@ -1,0 +1,96 @@
+.day {
+  width: 150px;
+  height: 100px;
+  background-color: var(--black);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--white);
+  border-radius: 10px;
+
+  .day-title {
+    height: 20px;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .targets {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+
+    p {
+      width: 46px;
+      height: 50px;
+      text-align: center;
+      border: 1px solid var(--white);
+      cursor: pointer;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.5s;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+    .four {
+      background-color: var(--darkOrange);
+      border: 1px solid var(--orange);
+    }
+    .five {
+      background-color: var(--darkBlue);
+      border: 1px solid var(--blue);
+    }
+    .ten {
+      background-color: var(--darkGreen);
+      border: 1px solid var(--green);
+    }
+  }
+
+  .study {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+
+    p {
+      width: 46px;
+      height: 50px;
+      text-align: center;
+      border: 1px solid var(--white);
+      cursor: pointer;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.5s;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+    .zero {
+      background-color: var(--darkRed);
+      border: 1px solid var(--red);
+    }
+    .half {
+      background-color: var(--darkOrange);
+      border: 1px solid var(--orange);
+    }
+    .full {
+      background-color: var(--darkGreen);
+      border: 1px solid var(--green);
+    }
+  }
+
+  .studied {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
