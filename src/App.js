@@ -7,17 +7,13 @@ import { updateTargetStudyCount } from "./redux/targetSlice";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 function App() {
-  const [suAnkiTarih, setSuAnkiTarih] = useState(new Date());
-
-  useEffect(() => {
-    setSuAnkiTarih(new Date());
-  }, []);
-
   const dispatch = useDispatch();
   const localStorageReload = () => {
     localStorage.setItem("currentStudy", 0);
     localStorage.setItem("targetStudy", 0);
     localStorage.setItem("pazartesi", -1);
+    localStorage.setItem("pazartesiStudiedRate", -1);
+
     localStorage.setItem("sali", -1);
     localStorage.setItem("carsamba", -1);
     localStorage.setItem("persembe", -1);
@@ -42,3 +38,6 @@ function App() {
 }
 
 export default App;
+
+//yapılan study e göre div ve renk değişimini + sayfa açılınca eğer pazartesi çalışıldıysa
+// ona göre renk vermesini yapmaya çalışıyorum

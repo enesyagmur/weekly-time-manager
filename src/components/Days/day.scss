@@ -1,6 +1,6 @@
 .day {
-  width: 150px;
-  height: 100px;
+  width: 190px;
+  height: 150px;
   background-color: var(--black);
   color: var(--white);
   display: flex;
@@ -18,13 +18,14 @@
 
   .targets {
     width: 100%;
-    height: 50px;
+    height: 75px;
     display: flex;
     justify-content: space-evenly;
+    align-items: flex-end;
 
     p {
-      width: 46px;
-      height: 50px;
+      width: 55px;
+
       text-align: center;
       border: 1px solid var(--white);
       cursor: pointer;
@@ -40,25 +41,27 @@
     .four {
       background-color: var(--darkOrange);
       border: 1px solid var(--orange);
+      height: 55px;
     }
     .five {
       background-color: var(--darkBlue);
       border: 1px solid var(--blue);
+      height: 65px;
     }
     .ten {
       background-color: var(--darkGreen);
       border: 1px solid var(--green);
+      height: 75px;
     }
   }
 
   .study {
     width: 100%;
-    height: 50px;
+    align-items: flex-end;
     display: flex;
     justify-content: space-evenly;
-
     p {
-      width: 46px;
+      width: 55px;
       height: 50px;
       text-align: center;
       border: 1px solid var(--white);
@@ -75,22 +78,25 @@
     .zero {
       background-color: var(--darkRed);
       border: 1px solid var(--red);
+      height: 55px;
     }
     .half {
       background-color: var(--darkOrange);
       border: 1px solid var(--orange);
+      height: 65px;
     }
     .full {
       background-color: var(--darkGreen);
       border: 1px solid var(--green);
+      height: 75px;
     }
   }
 
   .studied {
     width: 100%;
-    height: 50px;
+    height: 150px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
   }
 }

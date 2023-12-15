@@ -2,14 +2,23 @@ import React, { useEffect, useState } from "react";
 import "./day.scss";
 
 const Pazartesi = () => {
-  const [selectedTarget, setSelectedTarger] = useState(false);
-  const [hours, setHours] = useState([0, 2, 4]);
+  const [selectedTarget, setSelectedTarget] = useState(false);
+  const [targetTime, setTargetTime] = useState(0);
+  const [studiedRate, setstudiedRate] = useState([0, 50, 100]);
   const [studyCheck, setStudyCheck] = useState(false);
   const [studiedColors, setStudiedColors] = useState({
     bgColor: "#121212",
     brColor: "#d3d3d3",
     opacity: 1,
   });
+
+  const returnTargetStudyFunc = () => {
+    return Number(localStorage.getItem("targetStudy"));
+  };
+
+  const returnCurrentStudyFunc = () => {
+    return Number(localStorage.getItem("currentStudy"));
+  };
 
   const studyCheckFunc = () => {
     const thisDayStudy = Number(localStorage.getItem("pazartesi"));
@@ -19,38 +28,72 @@ const Pazartesi = () => {
     }
   };
 
-  const selectTargetFunc = (targetTime) => {
-    setSelectedTarger(true);
-    if (targetTime === 5) {
-      setHours([0, 2.5, 5]);
-    } else if (targetTime === 10) {
-      setHours([0, 5, 10]);
-    }
+  const selectTargetFunc = (targetTimeToday) => {
+    setTargetTime(targetTimeToday);
+    setSelectedTarget(true);
+    updateTargetStudyFunc(targetTimeToday);
   };
 
-  const selectStudiedFunc = (studiedTime) => {
-    localStorage.setItem("pazartesi", studiedTime);
-    setHours(studiedTime);
-    setStudyCheck(true);
-    if (studiedTime === 0) {
+  const updateTargetStudyFunc = (targetTimeToday) => {
+    const targetStudy = returnTargetStudyFunc();
+    const afterTodayTargetStudy = targetStudy + targetTimeToday;
+    localStorage.setItem("targetStudy", afterTodayTargetStudy);
+  };
+
+  const updateCurentStudyFunc = (studiedThisToday) => {
+    const currentStudy = returnCurrentStudyFunc();
+    const afterTodayCurrentStudy = currentStudy + studiedThisToday;
+    localStorage.setItem("currentStudy", afterTodayCurrentStudy);
+  };
+
+  const updadeRateThisDayFunc = (rate) => {
+    localStorage.setItem("pazartesiStudiedRate", rate);
+  };
+
+  const changeStyleFunc = () => {
+    const studyRate = localStorage.getItem("pazartesiStudiedRate");
+
+    if (studyRate === 0) {
       setStudiedColors({ bgColor: "#300202", brColor: "red", opacity: 0.5 });
-    } else if (studiedTime === 2 || studiedTime === 2.5 || studiedTime === 5) {
+      setSelectedTarget(true);
+      setStudyCheck(true);
+    } else if (studyRate === 0.5) {
+      setstudiedRate(50);
       setStudiedColors({
         bgColor: "#362600",
         brColor: "#b35f00",
         opacity: 0.5,
       });
-    } else if (studiedTime === 4 || studiedTime === 5 || studiedTime === 10) {
+      setSelectedTarget(true);
+      setStudyCheck(true);
+    } else if (studyRate === 1) {
+      setstudiedRate(100);
       setStudiedColors({
         bgColor: "#043b0c",
         brColor: "#3a994c",
         opacity: 0.5,
       });
+      setSelectedTarget(true);
+      setStudyCheck(true);
     }
+  };
+
+  const selectStudiedFunc = (rate) => {
+    const studyRate = rate / 100;
+    const studiedTime = targetTime * studyRate;
+    updadeRateThisDayFunc(studyRate);
+    updateThisDayStudyFunc(studiedTime);
+    updateCurentStudyFunc(studiedTime);
+    changeStyleFunc();
+  };
+
+  const updateThisDayStudyFunc = (time) => {
+    localStorage.setItem("pazartesi", time);
   };
 
   useEffect(() => {
     studyCheckFunc();
+    changeStyleFunc();
   }, []);
 
   if (selectedTarget === false) {
@@ -82,17 +125,28 @@ const Pazartesi = () => {
       >
         <p className="day-title">Pazartesi Yapılan</p>
         {studyCheck ? (
-          <div className="studied">{hours} s</div>
+          <div className="studied">
+            <p>{targetTime}s</p>
+          </div>
         ) : (
           <div className="study">
-            <p className="zero" onClick={() => selectStudiedFunc(hours[0])}>
-              {hours[0]} s
+            <p
+              className="zero"
+              onClick={() => selectStudiedFunc(studiedRate[0])}
+            >
+              {targetTime * 0}s
             </p>
-            <p className="half" onClick={() => selectStudiedFunc(hours[1])}>
-              {hours[1]} s
+            <p
+              className="half"
+              onClick={() => selectStudiedFunc(studiedRate[1])}
+            >
+              {targetTime / 2}s
             </p>
-            <p className="full" onClick={() => selectStudiedFunc(hours[2])}>
-              {hours[2]} s
+            <p
+              className="full"
+              onClick={() => selectStudiedFunc(studiedRate[2])}
+            >
+              {targetTime}s
             </p>
           </div>
         )}
