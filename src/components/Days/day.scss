@@ -57,38 +57,31 @@
 
   .study {
     width: 100%;
-    align-items: flex-end;
+    height: 100px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-evenly;
-    p {
-      width: 55px;
-      height: 50px;
-      text-align: center;
-      border: 1px solid var(--white);
-      cursor: pointer;
+
+    .study-input {
+      width: 80%;
+      height: 30px;
       border-radius: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      text-align: center;
+    }
+    .study-save-btn {
+      width: 80%;
+      height: 30px;
+      border-radius: 5px;
+      background-color: var(--black);
+      border: 1px solid var(--white);
+      color: var(--white);
       transition: all 0.5s;
+      cursor: pointer;
       &:hover {
-        opacity: 0.5;
+        background-color: var(--white);
+        color: var(--black);
       }
-    }
-    .zero {
-      background-color: var(--darkRed);
-      border: 1px solid var(--red);
-      height: 55px;
-    }
-    .half {
-      background-color: var(--darkOrange);
-      border: 1px solid var(--orange);
-      height: 65px;
-    }
-    .full {
-      background-color: var(--darkGreen);
-      border: 1px solid var(--green);
-      height: 75px;
     }
   }
 
@@ -98,5 +91,9 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+
+    p {
+      font-size: 30px;
+    }
   }
 }

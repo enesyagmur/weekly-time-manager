@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import "./dayList.scss";
-import Pazartesi from "./Days/Pazartesi";
-import Sali from "./Days/Sali";
-import Carsamba from "./Days/Carsamba";
-import Persembe from "./Days/Persembe";
-import Cuma from "./Days/Cuma";
-import Cumartesi from "./Days/Cumartesi";
-import Pazar from "./Days/Pazar";
+
+import Day from "./Days/Day";
 
 const DayList = () => {
+  const days = [
+    "Pazartesi",
+    "sali",
+    "carsamba",
+    "persembe",
+    "cuma",
+    "cumartesi",
+    "pazar",
+  ];
   return (
     <div className="day-list">
-      <Pazartesi />
-      <Sali />
-      <Carsamba />
-      <Persembe />
-      <Cuma />
-      <Cumartesi />
-      <Pazar />
+      {days.map((name) => (
+        <Day dayName={name} />
+      ))}
     </div>
   );
 };

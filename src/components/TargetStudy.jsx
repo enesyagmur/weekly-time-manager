@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./targetStudy.scss";
-import { useSelector } from "react-redux";
 
 const TargetStudy = () => {
-  const targetStudy = useSelector(
-    (state) => state.TargetStudy.targetStudyCount
+  const [takeTargetStudy, setTakeTargetStudy] = useState(
+    localStorage.getItem("currentStudy")
   );
-  return <div className="target-study">{targetStudy} s</div>;
+  return <div className="target-study">{takeTargetStudy} s</div>;
 };
 
 export default TargetStudy;
