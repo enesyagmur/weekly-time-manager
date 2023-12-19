@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./currentStudy.scss";
+import "./studyValue.scss";
 import { useSelector } from "react-redux";
 
 const CurrentStudy = () => {
@@ -7,7 +7,7 @@ const CurrentStudy = () => {
     localStorage.getItem("currentStudy")
   );
 
-  return <div className="current-study">{takeCurrentStudy} s</div>;
+  return <div className="current-study">Çalışılan {takeCurrentStudy} s</div>;
 };
 
 export default CurrentStudy;
