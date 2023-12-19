@@ -6,12 +6,12 @@ import Day from "./Days/Day";
 const DayList = () => {
   const days = [
     "Pazartesi",
-    "sali",
-    "carsamba",
-    "persembe",
-    "cuma",
-    "cumartesi",
-    "pazar",
+    "Salı",
+    "Çarşamba",
+    "Perşembe",
+    "Cuma",
+    "Cumartesi",
+    "Pazar",
   ];
   return (
     <div className="day-list">

@@ -7,13 +7,13 @@ function App() {
   const localStorageReload = () => {
     localStorage.setItem("currentStudy", 0);
     localStorage.setItem("targetStudy", 0);
-    localStorage.setItem("pazartesi", -1);
-    localStorage.setItem("sali", -1);
-    localStorage.setItem("carsamba", -1);
-    localStorage.setItem("persembe", -1);
-    localStorage.setItem("cuma", -1);
-    localStorage.setItem("cumartesi", -1);
-    localStorage.setItem("pazar", -1);
+    localStorage.setItem("Pazartesi", -1);
+    localStorage.setItem("Salı", -1);
+    localStorage.setItem("Çarşamba", -1);
+    localStorage.setItem("Perşembe", -1);
+    localStorage.setItem("Cuma", -1);
+    localStorage.setItem("Cumartesi", -1);
+    localStorage.setItem("Pazar", -1);
     window.location.reload();
   };
 

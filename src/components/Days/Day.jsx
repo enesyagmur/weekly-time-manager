@@ -59,7 +59,13 @@ const Day = ({ dayName }) => {
           brColor: "#b35f00",
           opacity: 0.5,
         });
-      } else if ((studyTime) => 4 && studyTime < 10) {
+      } else if (studyTime >= 4 && studyTime < 10) {
+        setStudiedColors({
+          bgColor: "#154163",
+          brColor: "#56a2e8",
+          opacity: 0.5,
+        });
+      } else if (studyTime >= 4 && studyTime < 10) {
         setStudiedColors({
           bgColor: "#154163",
           brColor: "#56a2e8",
