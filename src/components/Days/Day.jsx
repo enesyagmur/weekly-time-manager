@@ -1,17 +1,36 @@
 import React, { useEffect, useState } from "react";
 import "./day.scss";
+import { useDispatch } from "react-redux";
+import { updateTargetStudyCount } from "../../redux/targetSlice";
+import { updateCurrentStudyCount } from "../../redux/currentSlice";
 
 const Day = ({ dayName }) => {
   const [selectedTarget, setSelectedTarget] = useState(false);
-  const [targetTime, setTargetTime] = useState(0);
   const [studyTime, setStudyTime] = useState();
   const [studyCheck, setStudyCheck] = useState(false);
+  const dispatch = useDispatch();
 
   const [studiedColors, setStudiedColors] = useState({
     bgColor: "#121212",
     brColor: "#d3d3d3",
     opacity: 1,
   });
+
+  const takeTargetSelectedValueFunc = () => {
+    return Number(localStorage.getItem("targetSelectedValue"));
+  };
+
+  const targetSelectedUpdateFunc = () => {
+    const takeValue = takeTargetSelectedValueFunc();
+    localStorage.setItem("targetSelectedValue", takeValue + 1);
+  };
+
+  const checkSelectedTargetFunc = () => {
+    const takeValue = takeTargetSelectedValueFunc();
+    if (takeValue === 7) {
+      setSelectedTarget(true);
+    }
+  };
 
   const returnTargetStudyFunc = () => {
     return Number(localStorage.getItem("targetStudy"));
@@ -32,21 +51,23 @@ const Day = ({ dayName }) => {
   };
 
   const selectTargetFunc = (targetTimeToday) => {
-    setTargetTime(targetTimeToday);
     setSelectedTarget(true);
     updateTargetStudyFunc(targetTimeToday);
+    targetSelectedUpdateFunc();
   };
 
   const updateTargetStudyFunc = (target) => {
     const takeTargetStudy = returnTargetStudyFunc();
     const afterTodayTargetStudy = takeTargetStudy + target;
     localStorage.setItem("targetStudy", afterTodayTargetStudy);
+    dispatch(updateTargetStudyCount(Number(target)));
   };
 
   const updateCurentStudyFunc = (studiedThisToday) => {
     const currentStudy = returnCurrentStudyFunc();
     const afterTodayCurrentStudy = currentStudy + studiedThisToday;
     localStorage.setItem("currentStudy", afterTodayCurrentStudy);
+    dispatch(updateCurrentStudyCount(Number(studiedThisToday)));
   };
 
   const changeStyleFunc = () => {
@@ -88,7 +109,6 @@ const Day = ({ dayName }) => {
       updateCurentStudyFunc(Number(studyTime));
       setStudyCheck(true);
       changeStyleFunc();
-      window.location.reload();
     }
   };
 
@@ -97,7 +117,7 @@ const Day = ({ dayName }) => {
   };
 
   useEffect(() => {
-    studyCheckFunc();
+    checkSelectedTargetFunc();
   }, []);
 
   useEffect(() => {

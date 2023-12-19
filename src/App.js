@@ -7,6 +7,7 @@ function App() {
   const localStorageReload = () => {
     localStorage.setItem("currentStudy", 0);
     localStorage.setItem("targetStudy", 0);
+    localStorage.setItem("targetSelectedValue", 0);
     localStorage.setItem("Pazartesi", -1);
     localStorage.setItem("Salı", -1);
     localStorage.setItem("Çarşamba", -1);
@@ -30,5 +31,3 @@ function App() {
 }
 
 export default App;
-
-//sadece 1 komponent üzerinden tüm günleri yapma

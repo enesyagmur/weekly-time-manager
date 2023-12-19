@@ -3,11 +3,15 @@ import "./studyValue.scss";
 import { useSelector } from "react-redux";
 
 const CurrentStudy = () => {
-  const [takeCurrentStudy, setTakeCurrentStudy] = useState(
-    localStorage.getItem("currentStudy")
+  const currentStudy = useSelector(
+    (state) => state.CurrentStudy.currentStudyCount
   );
 
-  return <div className="current-study">Çalışılan {takeCurrentStudy} s</div>;
+  return (
+    <div className="current-study">
+      <h4> Çalışılan</h4> {currentStudy} <p>saat</p>
+    </div>
+  );
 };
 
 export default CurrentStudy;

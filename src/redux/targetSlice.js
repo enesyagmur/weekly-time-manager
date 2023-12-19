@@ -3,12 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 export const targetSlice = createSlice({
   name: "target",
   initialState: {
-    targetStudyCount: localStorage.getItem("targetStudy"),
+    targetStudyCount: Number(localStorage.getItem("targetStudy")),
   },
   reducers: {
-    updateTargetStudyCount: (state) => {
-      const target = localStorage.getItem("targetStudy");
-      state.targetStudyCount = target;
+    updateTargetStudyCount: (state, action) => {
+      const takeTarget = state.targetStudyCount;
+      const totalTarget = takeTarget + action.payload;
+      state.targetStudyCount = totalTarget;
     },
   },
 });
