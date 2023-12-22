@@ -130,13 +130,13 @@ const Day = ({ dayName }) => {
         <p className="day-title">{dayName} Hedef</p>
         <div className="targets">
           <p className="four" onClick={() => selectTargetFunc(3)}>
-            4 s
+            3 s
           </p>
           <p className="five" onClick={() => selectTargetFunc(4)}>
-            5 s
+            4 s
           </p>
           <p className="ten" onClick={() => selectTargetFunc(7)}>
-            10 s
+            7 s
           </p>
         </div>
       </div>
