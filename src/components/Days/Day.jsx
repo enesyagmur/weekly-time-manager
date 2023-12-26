@@ -27,7 +27,7 @@ const Day = ({ dayName }) => {
 
   const checkSelectedTargetFunc = () => {
     const takeValue = takeTargetSelectedValueFunc();
-    if (takeValue === 7) {
+    if (takeValue === 11) {
       setSelectedTarget(true);
     }
   };
@@ -80,19 +80,19 @@ const Day = ({ dayName }) => {
           brColor: "#b35f00",
           opacity: 0.5,
         });
-      } else if (studyTime >= 4 && studyTime < 10) {
+      } else if (studyTime >= 4 && studyTime < 11) {
         setStudiedColors({
           bgColor: "#154163",
           brColor: "#56a2e8",
           opacity: 0.5,
         });
-      } else if (studyTime >= 4 && studyTime < 10) {
+      } else if (studyTime >= 4 && studyTime < 11) {
         setStudiedColors({
           bgColor: "#154163",
           brColor: "#56a2e8",
           opacity: 0.5,
         });
-      } else if (studyTime >= 10) {
+      } else if (studyTime >= 11) {
         setStudiedColors({
           bgColor: "#043b0c",
           brColor: "#3a994c",
@@ -129,14 +129,14 @@ const Day = ({ dayName }) => {
       <div className="day">
         <p className="day-title">{dayName} Hedef</p>
         <div className="targets">
-          <p className="four" onClick={() => selectTargetFunc(3)}>
-            3 s
-          </p>
-          <p className="five" onClick={() => selectTargetFunc(4)}>
+          <p className="four" onClick={() => selectTargetFunc(4)}>
             4 s
           </p>
-          <p className="ten" onClick={() => selectTargetFunc(7)}>
-            7 s
+          <p className="five" onClick={() => selectTargetFunc(5)}>
+            5 s
+          </p>
+          <p className="ten" onClick={() => selectTargetFunc(11)}>
+            11 s
           </p>
         </div>
       </div>
